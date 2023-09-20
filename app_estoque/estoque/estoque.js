@@ -13,7 +13,7 @@ function adicionar_produto(p){
     produtos.push(p);
 }
 
-function listar_produtos(){
+function listar_produtos() {
     return produtos;
 }
 
@@ -27,9 +27,17 @@ function editar_produto(id, qtdAtual){
     return pRetorno;
 }
 
+function remover_produto(id) {
+    produtos = produtos.filter((p) => {
+        return p.id != id
+    })
+    return {};
+}
+
 module.exports = {
     criar_produto,
     adicionar_produto,
     listar_produtos,
-    editar_produto
+    editar_produto,
+    remover_produto
 };
