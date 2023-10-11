@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- CASO DE VALIDADO -->
+
+        {{^erro_form}}
+        <div class="alert alert-success mt-3" role="alert">
+            Os campos foram preenchidos corretamente!
+        </div>
+        <div class="col-8 offset-2 mt-3 mb-5">
+            <h1>Confirmação dos dados</h1>
+            <h5>Nome completo: {{formulario.nome}}</h5>
+            <h5>CPF: {{formulario.cpf}}</h5>
+            <h5>Data de nascimento: {{formulario.nascimento}}</h5>
+            <h5>Endereço: {{formulario.endereco}}</h5>
+            <h5>UF: {{formulario.uf}}</h5>
+            <h5>CEP: {{formulario.cep}}</h5>
+            <h5>E-mail: {{formulario.email}}</h5>
+            <h5>Telefone: {{formulario.telefone}}</h5>
+        </div>
+        {{/erro_form}}
+
+        <!-- CASO DE ERRO -->
+        
+        {{#erro_form}}
+        <div class="alert alert-danger mt-3" role="alert">
+            Algum campo obrigatório não foi preenchido!
+        </div>
+        {{/erro_form}}
+
+
+    </div>
+</body>
+
+</html>
