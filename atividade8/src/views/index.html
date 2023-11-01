@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Calculadora</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Calculadora</h1>
+    <form action="/calcular" method="post">
+      <div class="mb-3">
+        <label for="numeroA" class="form-label">Número A:</label>
+        <input type="number" class="form-control" id="numeroA" name="numeroA" required>
+      </div>
+      <div class="mb-3">
+        <label for="numeroB" class="form-label">Número B:</label>
+        <input type="number" class="form-control" id="numeroB" name="numeroB" required>
+      </div>
+      <div class="mb-3">
+        <label for="operacao" class="form-label">Operação:</label>
+        <select class="form-select" id="operacao" name="operacao" required>
+          <option value="+">Soma (+)</option>
+          <option value="-">Subtração (-)</option>
+          <option value="*">Multiplicação (*)</option>
+          <option value="/">Divisão (/)</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+  </div>
+</body>
+</html>
