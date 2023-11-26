@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header-menu">
+      <div class="return-home">
+        <a href="home">
+          <img src="img/home.png" alt="Home" />
+        </a>
+      </div>
+      <div class="logo">
+        <img src="img/zyro-image_sfB.png" alt="Logo" style="margin-left: 50px"/>
+      </div>
+      <div class="menu-title">
+        <h1>PULSEIRAS</h1>
+      </div>
+    </header>
+    <div class="form-excluir">
+      <form action="produto/excluir" method="post">
+        <label for="produtoId">Informe o ID do Produto:</label>
+        <input type="text" id="produtoId" name="produtoId" required class="input-id" style="text-align: center; font-family: 'Poppins', sans-serif;"/>
+        <div class="form-buttons">
+          <button class="remover-btn">Remover</button>
+        </form>
+          <form action="produto/criacao" method="post">
+            <button class="adicionar-btn">Adicionar</button>
+          </form>
+          <div class="container">
+            <form action="produto/editar" method="post">
+              <button class="editar-btn">Editar</button>
+            </form>
+          </div>
+        </div>
+      </form>
+    </div>
+    <footer class="footer-home">
+      <img src="img/logo-sfP.png" alt="" height="50%" />
+    </footer>
+  </body>
+</html>
