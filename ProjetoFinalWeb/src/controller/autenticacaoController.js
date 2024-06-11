@@ -2,64 +2,81 @@
 
 const Usuario = require('../model/usuario');
 
-const criarUsuarioAdmin = async () => {
+async function UsuarioAdmin() { // criar na controller
     try {
-      const senhaAdmin = 'admin'; // Substitua pela senha desejada
-      const usuarioAdmin = {
-        id: 1, // Substitua pelo valor desejado para o ID
-        cpf: 'admin', // Substitua pelo CPF desejado
-        senha: senhaAdmin, 
-        nome: 'admin', // Substitua pelo nome desejado
-        status: 'Ativo' // 'Ativo' ou 'Inativo'
-      };
+        // Verifica se já existe um usuário admin
+        const adminUser = await Usuario.findOne({ where: { cpf: 'admin' } });
+        
+        if (!adminUser) {
+            // Cria um usuário admin se não existir
+            const admin = await Usuario.create({id: '1', cpf: 'admin', senha: 'admin', nome: 'admin', status: 'Ativo'});
+            console.log('Usuário admin criado:', admin.toJSON());
+        } else {
+            console.log('Usuário admin já existe:', adminUser.toJSON());
+        }
   
-      // Inserindo o usuário admin no banco de dados
-      await Usuario.create(usuarioAdmin);
-  
-      console.log('Usuário admin criado com sucesso.');
     } catch (error) {
-      console.error('Erro ao criar usuário admin:', error);
+        console.error('Erro ao criar usuário:', error);
     }
-  };
+}
+
+// async function verificarCredenciais(){
+//     console.log("testando123")
+//     try {
+//         const usuario = await Usuario.findOne({where: { cpf: req.body.cpf, senha: req.body.senha}})
+
+//         if(usuario) {
+//             alert("Usuário encontrado, você será redirecionado!");
+//             setTimeout(()=>{
+//                 homeView();
+//             }, 1000) 
+//         } else 
+//             alert("Usuário não existe!");
+//     } catch(error) {
+//         console.log(error);
+//     }
+// }   
+
 
 function indexView(req, res) {
-    criarUsuarioAdmin();
-    res.render('index.html');
+    res.render('index');
     
 }
 
 function homeView(req, res) {
-    res.render('home.html');
+    res.render('home');
 }
 
 async function autenticar(req, res){
-    // const usuario = await Usuario.findOne({ where: {
-    //     login: req.body.matricula, 
-    //     senha: req.body.senha}
-    // });
-    // if(usuario !== null){
-    //     req.session.autorizado = true;
-    //     req.session.usuario = usuario;
-    //     req.session.situacao == 1;
-    //     res.redirect('/home.html');
-    // }
-    // else{
-    //     let erro_autenticacao = true;
-    //     res.render('index.html', {erro_autenticacao});
-    // }
-    res.redirect('/home');
+
+    try {
+    const usuario = await Usuario.findOne({ where: {
+        cpf: req.body.cpf, 
+        senha: req.body.senha,
+        status: 'Ativo'}
+    });
+
+    if(usuario) {
+        console.log("Usuário encontrado, você será redirecionado!");
+        return homeView(req, res); 
+    } else 
+        console.log("Usuário não existe!");
+        return indexView(req, res);
+    } catch(error) {
+        console.log(error);
+    }
 }
 
-function verificarAutenticacao(req, res, next) {
-    if(req.session.autorizado){
-        console.log("usuário autorizado");
-        next();
-    }
-    else{
-        console.log("usuário NÃO autorizado");
-        res.redirect('/');
-    }   
-}
+// function verificarAutenticacao(req, res, next) {
+//     if(req.session.autorizado){
+//         console.log("usuário autorizado");
+//         next();
+//     }
+//     else{
+//         console.log("usuário NÃO autorizado");
+//         res.redirect('/');
+//     }   
+// }
 
 function sair(req, res) {
     req.session.destroy();
@@ -68,8 +85,8 @@ function sair(req, res) {
 
 module.exports = {
     autenticar,
-    verificarAutenticacao,
     sair,
     indexView,
     homeView,
+    UsuarioAdmin,
 }

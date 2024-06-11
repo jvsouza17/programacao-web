@@ -4,7 +4,7 @@ const session = require('express-session');
 const db = require('./src/db');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-
+const auth = require('./src/controller/autenticacaoController')
 const app = express();
 
 app.use(methodOverride('_method'));
@@ -32,15 +32,14 @@ app.use('/', require('./src/routes/autenticacaoRoutes'));
 db.sync() 
     .then(() => {
     console.log('Modelo sincronizado com o banco de dados');
-    // Resto do código do seu aplicativo
-  })
+  }).then(auth.UsuarioAdmin())
     .catch((err) => {
     console.error('Erro ao sincronizar modelo:', err);
   });
 
-const PORT = 8088;
+const PORT = 8080;
 app.listen(PORT, ()=>{
     console.log('App rodando na porta ' + PORT)
 });
 
-db.options.logging = (msg) => console.log(msg);
+// db.options.logging = (msg) => console.log(msg);
