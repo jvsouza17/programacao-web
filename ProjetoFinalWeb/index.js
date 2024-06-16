@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const auth = require('./src/controller/autenticacaoController')
 const app = express();
 
+console.log('Servindo arquivos estáticos da pasta:', __dirname + '/public');
+
 app.use(methodOverride('_method'));
 
 app.engine('html', mustacheExpress());
@@ -18,10 +20,10 @@ app.use(express.json());
 app.use(express.static(__dirname + '/public')); // arquivos públicos da aplicação como imagens e css
 
 app.use(session({
-    secret: 'secret-token',
-    name: 'sessionId',
-    resave: false,
-    saveUninitialized: false
+  secret: 'secret-token',
+  name: 'sessionId',
+  resave: false,
+  saveUninitialized: false
 }));
 
 //Define as rotas da aplicação na pasta routes
@@ -29,17 +31,17 @@ app.use('/', require('./src/routes/produtoRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
 
-db.sync() 
-    .then(() => {
+db.sync()
+  .then(() => {
     console.log('Modelo sincronizado com o banco de dados');
   }).then(auth.UsuarioAdmin())
-    .catch((err) => {
+  .catch((err) => {
     console.error('Erro ao sincronizar modelo:', err);
   });
 
 const PORT = 8080;
-app.listen(PORT, ()=>{
-    console.log('App rodando na porta ' + PORT)
+app.listen(PORT, () => {
+  console.log('App rodando na porta ' + PORT)
 });
 
 // db.options.logging = (msg) => console.log(msg);

@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h2 class="mb-4">Cadastrar usuário</h2>
-        <form id="formularioUsuario" method="post" action="/usuario/cadastrar">
-          <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF"required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Status</label>
-            <select name="status" id="status" required>
-              <option value="Ativo">Ativo</option>
-              <option value="Inativo">Inativo</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Criar</button>
-        </form>
-      </div>
+  <header class="header-menu">
+    <div class="return-home">
+      <a href="/">
+        <img src="/img/logout.png" alt="Home">
+      </a>
     </div>
+    <div class="logo">
+      <a href="home">
+        <img src="/img/zyro-image_sfB.png" alt="Logo">
+      </a>
+    </div>
+    <div class="menu-title">
+      <h1>HOME</h1>
+    </div>
+  </header>
+
+  <div>
+    <h2>Cadastrar usuário</h2>
+    <form id="formularioUsuario" method="post" action="/usuario/cadastrar">
+      <div style="width: 100%;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label style="flex: 0 0 150px;">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label style="flex: 0 0 150px;">CPF</label>
+          <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label style="flex: 0 0 150px;">Senha</label>
+          <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" required>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label style="flex: 0 0 150px;">Status</label>
+          <select name="status" id="status" class="select-status" required>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 15px; margin-left: 40%;">Criar</button>
+    </form>
   </div>
-  </body>
+  <div class="div-footer-home">
+    <img src="/img/logo-sfP.png" alt="Logo" height="50%">
+  </div>
+  </div>
+</body>
+
 </html>

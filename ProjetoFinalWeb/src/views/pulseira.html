@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <header class="header-menu">
       <div class="return-home">
         <a href="/">
-          <img src="img/logout.png" alt="Home" />
+          <img src="/img/logout.png" alt="Home" />
         </a>
       </div>
       <div class="logo">
         <a href="home">
-          <img src="img/zyro-image_sfB.png" alt="Logo" style="margin-left: 50px">
+          <img src="/img/zyro-image_sfB.png" alt="Logo" style="margin-left: 50px">
         </a>
       </div>
       <div class="menu-title">
@@ -21,7 +23,7 @@
     </header>
     <div class="form-excluir">
       <form action="produto/excluir" method="post">
-        <label for="produtoId">Informe o ID do Produto:</label>
+        <label for="produtoId">Informe o ID da Pulseira:</label>
         <input type="text" id="produtoId" name="produtoId" required class="input-id" style="text-align: center; font-family: 'Poppins', sans-serif;"/>
         <div class="form-buttons">
           <button class="remover-btn">Remover</button>
@@ -37,8 +39,8 @@
         </div>
       </form>
     </div>
-    <footer class="footer-home">
-      <img src="img/logo-sfP.png" alt="" height="50%" />
-    </footer>
+    <div class="div-footer-home">
+      <img src="/img/logo-sfP.png" alt="Logo" height="50%">
+  </div>
   </body>
 </html>
